@@ -7,6 +7,9 @@ nginx-ingress:
       enable: true
     appprotectdos:
       enable: true
+      maxWorkers: 1
+      maxDaemons: 1
+      memory: 32
     ingressClass: nginx-nap-dos-plus-ingress
     config:
       proxy-protocol: true
