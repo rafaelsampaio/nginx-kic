@@ -3,14 +3,9 @@ nginx-ingress:
     nginxplus: true
     #kind: deployment
     #replicaCount: 1
-    appprotect:
-      enable: true
     appprotectdos:
       enable: true
-      maxWorkers: 1
-      maxDaemons: 1
-      memory: 32
-    ingressClass: nginx-nap-dos-plus-ingress
+    ingressClass: nginx-plus-dos-ingress
     config:
       proxy-protocol: true
       real-ip-header: proxy_protocol
@@ -26,10 +21,10 @@ nginx-ingress:
       port: 9000
       allowCidrs: 0.0.0.0/0
     service:
-      name: nginx-nap-dos-plus-ingress
+      name: nginx-plus-dos-ingress
       #type: LoadBalancer
     image:
-      repository: 
-      tag: 
+      repository:
+      tag:
   #prometheus:
     #create: true
