@@ -2,9 +2,9 @@
 apiVersion: v2
 name: nginx-plus-nap-dos-ingress
 type: application
-version: 1.1.2
-appVersion: "2.4.2"
+version: 1.2.0
+appVersion: "3.0.0"
 dependencies:
   - name: nginx-ingress
-    version: 0.15.2
+    version: 0.16.0
     repository: https://helm.nginx.com/stable
