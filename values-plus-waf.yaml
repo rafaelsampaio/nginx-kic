@@ -1,30 +1,28 @@
 nginx-ingress:
   controller:
+    ingressClass: nginx-ingress
+    service:
+      name: nginx-ingress
+    image:
+      pullPolicy: Always
+      repository: nginx-ic-nap/nginx-plus-ingress
+      tag: 3.2.1
+    serviceAccount:
+      imagePullSecretName: #!!! CHANGE ME !!!
     nginxplus: true
-    #kind: deployment
-    #replicaCount: 1
     appprotect:
       enable: true
-    ingressClass: nginx-plus-nap-ingress
     config:
       proxy-protocol: true
       real-ip-header: proxy_protocol
       set-real-ip-from: 0.0.0.0/0
-    #enableCustomResources: true
-    enablePreviewPolicies: true
+    enableCertManager: true
+    enableOIDC: true
     enableSnippets: true
     enableTLSPassthrough: true
     enableLatencyMetrics: true
     healthStatus: true
     nginxStatus:
-      #enable: true
-      port: 9000
       allowCidrs: 0.0.0.0/0
-    service:
-      name: nginx-plus-nap-ingress
-      #type: LoadBalancer
-    image:
-      repository:
-      tag:
-  #prometheus:
-    #create: true
+  serviceInsight:
+    create: true

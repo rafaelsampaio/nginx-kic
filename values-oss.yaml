@@ -1,0 +1,20 @@
+nginx-ingress:
+  controller:
+    ingressClass: nginx-ingress
+    service:
+      name: nginx-ingress
+    image:
+      pullPolicy: Always
+      repository: nginx/nginx-ingress
+      tag: 3.3.1
+    config:
+      proxy-protocol: true
+      real-ip-header: proxy_protocol
+      set-real-ip-from: 0.0.0.0/0
+    enableCertManager: true
+    enableOIDC: true
+    enableSnippets: true
+    enableTLSPassthrough: true
+    enableLatencyMetrics: true
+    healthStatus: true
+

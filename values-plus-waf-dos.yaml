@@ -1,0 +1,31 @@
+nginx-ingress:
+  controller:
+    ingressClass: nginx-ingress
+    service:
+      name: nginx-ingress
+    image:
+      pullPolicy: Always
+      repository: nginx-ic-nap-dos/nginx-plus-ingress
+      tag: 3.2.1
+    serviceAccount:
+      imagePullSecretName: #!!! CHANGE ME !!!
+    nginxplus: true
+    appprotect:
+      enable: true
+    appprotectdos:
+      enable: true
+    config:
+      proxy-protocol: true
+      real-ip-header: proxy_protocol
+      set-real-ip-from: 0.0.0.0/0
+    enableCertManager: true
+    enableOIDC: true
+    enableSnippets: true
+    enableTLSPassthrough: true
+    enableLatencyMetrics: true
+    healthStatus: true
+    nginxStatus:
+      allowCidrs: 0.0.0.0/0
+  serviceInsight:
+    create: true
+
